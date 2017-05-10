@@ -31,6 +31,8 @@ As root:
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
+Once the above is done, you should be able to read the README-FC+RHEL+CENTOS.md file and then Install the components on the server using the Install script.
+
 ## Downstream Installation - Fedora-25
 The motivation for this webhookListener project is to allow automated building of jekyll sites following a github webhook push event.
 Barring finding a more appropriate location for this, some of the downstream documentation will be kept here (at least for now).
