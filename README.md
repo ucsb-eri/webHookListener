@@ -13,7 +13,7 @@ ie:
 ```
 export WEBHOOK_LISTENER_SECRET_TOKEN=NotMyRealSecretString
 export WEBHOOK_LISTENER_BIND_ADDRESS=128.111.100.94
-export WEBHOOK_LISTENER_SCRIPT=/opt/local/bin/myWebHookScript
+export WEBHOOK_LISTENER_SCRIPTSHELL=/opt/local/bin/myWebHookScript
 ruby webhookListener.rb
 ```
 
