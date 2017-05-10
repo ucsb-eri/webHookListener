@@ -22,6 +22,13 @@ As root:
   + WHSCRIPT=webhookListener.sh
   + WHSVCDIR=/lib/systemd/system
   + WHSVC=webhookListener.service
+  + WHSVCLOG=webhookListenerSvc.log   # not used at the moment
+  + WHSCRIPTLOG=/var/log/webhookListener.log
+
++ Prep the logfile
+  + touch $WHSCRIPTLOG
+  + chmod 664 $WHSCRIPTLOG
+  + chown $WHUSER:$WHGROUP $WHSCRIPTLOG
 + Setup the shell script that will be called by the ruby script:
   + mkdir -p $WHBINDIR 
   + cp $WHSCRIPT $WHBINDIR 
