@@ -22,3 +22,12 @@ The webhookListener.rb calls a unix shell script with two arguments:
 + The event type that initiated the webhook
 
 This allows the listener to handle webhook calls from different repos, but they would all have to share a common Secret Token.
+
+## Installation - Fedora-25
+As root:
++ dnf install ruby
+As a regular user (possibly the account that will run the above?)
++ gem install sinatra
+
+## Installation - downstream to allow building jekyll sites
++ gem install jekyll bundler
