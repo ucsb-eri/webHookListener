@@ -1,0 +1,16 @@
+[Unit]
+Description=eri_firstboot
+After=autofs.service
+Requires=autofs.service
+
+[Service]
+User=WHUSER
+Group=WHGROUP
+Type=simple
+TimeoutStartSec=0
+EnvironmentFile=WHENV
+ExecStart=ruby WHRUBYSCRIPT
+
+[Install]
+WantedBy=multi-user.target
+
