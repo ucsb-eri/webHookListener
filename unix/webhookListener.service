@@ -1,15 +1,15 @@
 [Unit]
-Description=eri_firstboot
+Description=webhookListener
 After=autofs.service
 Requires=autofs.service
 
 [Service]
-User=WHUSER
-Group=WHGROUP
 Type=simple
 TimeoutStartSec=0
+User=WHUSER
+Group=WHGROUP
 EnvironmentFile=WHENV
-ExecStart=ruby WHRUBYSCRIPT
+ExecStart=WHRUBYSCRIPT
 
 [Install]
 WantedBy=multi-user.target
