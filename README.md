@@ -31,5 +31,5 @@ As root:
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
-## Installation - downstream to allow building jekyll sites
+## Installation - downstream to allow building jekyll sites (our original goal with this)
 + gem install jekyll bundler
