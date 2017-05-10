@@ -16,5 +16,8 @@ export WEBHOOK_LISTENER_SCRIPT=/opt/local/bin/myWebHookScript
 ruby webhookListener.rb
 ```
 
-The webhookListener.rb calls a unix shell script with the name of the repo initiating the webhook.
-It can handle webhook calls from different repos, but they would all have to share a common Secret Token.
+The webhookListener.rb calls a unix shell script with two arguments:
++ The name of the repo initiating the webhook
++ The event type that initiated the webhook
+
+This allows the listener to handle webhook calls from different repos, but they would all have to share a common Secret Token.
