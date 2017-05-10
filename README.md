@@ -31,7 +31,10 @@ As root:
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
-## Installation - downstream to allow building jekyll sites (our original goal with this)
+## Downstream Installation - Fedora-25.
+The motivation for this webhookListener project is to allow automated building of jekyll sites following a github webhook push event.
+Barring finding a more appropriate location for this, some of the downstream documentation will be kept here (at least for now).
+
 As root:
 + dnf install gcc redhat-rpm-config
 
