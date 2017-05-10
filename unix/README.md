@@ -2,6 +2,8 @@
 
 + __webhookListener.sh__ - An example script to be triggered by the ruby script
 + __webhookListener.service__ - systemd script to start the ruby/sinatra listener service
++ __Install.sh__ - shell script to help with installation of the script and service
+
 
 Run the following as root to prep the logfile used in the example script:
 ```
@@ -10,14 +12,13 @@ touch $log
 chmod 666 $log
 ```
 ## Installation of components:
-Should really create a script to do this stuff, but maybe a bit later:
-
-As root:
-+ Setup some variables to help make this simpler, maybe will add a script to help with this later :-)
-  + WHUSER=aaron
-  + WHGROUP=aaron
-  + WHENV=/etc/sysconfig/webhookListener
-  + WHRUBYSCRIPT=/var/www/vhosts/webhookListener.rb
++ Edit the Install.sh script and adjust the variables at the top to reflect the installation on your system.
++ sh ./Install.sh
++ The Install.sh variables and their usage are documented a bit below
+  + WHUSER=aaron       # User that webhookListener services should run as
+  + WHGROUP=aaron      # Group that webhookListener services should run as
+  + WHENV=/etc/sysconfig/webhookListener  # Environment Variables for the Ruby/Sinatra script added to this file for the systemd service
+  + WHRUBYSCRIPT=/var/www/vhosts/webhookListener.rb   # Where the ruby script will live
   + WHBINDIR=/opt/local/bin
   + WHSCRIPT=webhookListener.sh
   + WHSVCDIR=/lib/systemd/system
