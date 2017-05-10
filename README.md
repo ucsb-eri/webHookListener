@@ -25,11 +25,15 @@ This allows the listener to handle webhook calls from different repos, but they 
 
 ## Installation - Fedora-25
 As root:
-+ dnf install ruby ruby-devel
++ dnf install ruby ruby-devel rubygems
 + If you are running a firewall, remember to poke a hole for port 4567 (sinatra default port)
 
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
 ## Installation - downstream to allow building jekyll sites (our original goal with this)
+As root:
++ dnf install gcc redhat-rpm-config
+
+As a regular user:
 + gem install jekyll bundler
