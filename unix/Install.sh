@@ -16,28 +16,39 @@ echo "Prep the logfile"
 chmod 664 $WH_SCRIPTLOG
 chown $WH_USER:$WH_GROUP $WH_SCRIPTLOG
 
-echo "Setup the shell script that will be called by the ruby script:"
-if [ ! -d "$WH_BIDIR" ]; then
+echo "Checking on the $WH_SCRIPTBINDIR install destination:"
+if [ ! -d "$WH_SCRIPTBIDIR" ]; then
     mkdir -p $WH_SCRIPTBINDIR
     [ $? -eq 0 ] || { echo "unable to create bin dir: $WH_SCRIPTBINDIR"; exit 1; }  
 fi
 
-if [ -f "$WH_SCRIPTSHELL" ]; then
-    cat $WH_SCRIPTSHELL | sed -e "s/WH_SCRIPTLOG/$WH_SCRIPTLOG/" > $WH_SCRIPTBINDIR
-    [ $? -eq 0 ] || { echo "unable to create script: $WH_SCRIPTSHELL in dir: $WH_SCRIPTBINDIR"; exit 1; }  
+echo "Installing $WH_SCRIPTSHELL in $WH_SCRIPTBINDIR:"
+file=$WH_SCRIPTBINDIR/$WH_SCRIPTSHELL
+if [ -f "$file" ]; then
+    cat $WH_SCRIPTSHELL | sed -e "s/WH_SCRIPTLOG/$WH_SCRIPTLOG/" > $file
+    [ $? -eq 0 ] || { echo "unable to create script: $file"; exit 1; }  
 else
-    echo "$WH_SCRIPTSHELL already exists, no changes"
+    echo "$file already exists, no changes"
 fi
-chown $WH_USER $WH_SCRIPTBINDIR/$WH_SCRIPTSHELL
+chown $WH_USER $file
 
+echo "Installing $WH_SCRIPTRUBY in $WH_SCRIPTBINDIR:"
+file=$WH_SCRIPTBINDIR/$WH_SCRIPTRUBY
+if [ -f "$file" ]; then
+    cat $WH_SCRIPTRUBY  > $file
+    [ $? -eq 0 ] || { echo "unable to create script: $file"; exit 1; }  
+else
+    echo "$file already exists, no changes"
+fi
+chown $WH_USER $file
 
-echo "Setup the systemd service:"
+echo "Installing/Configuring the systemd service:"
 if [ -f "$WH_SVCDIR/$WH_SVCFILE" ]; then
     cat $WH_SVCFILE | sed \
         -e "s/WH_USER/$WH_USER/" \
         -e "s/WH_GROUP/$WH_GROUP/" \
-        -e "s/WH_SCRIPTRUBY/$WH_SCRIPTRUBY/" \
         -e "s/WH_ENV/$WH_ENV/" \
+        -e "s/WH_SCRIPTRUBY/$WH_SCRIPTRUBY/" \
 	> $WH_SVCDIR/$WH_SVCFILE
 else
     echo "$WH_SVCDIR/$WH_SVCFILE already exists, no changes"
@@ -45,7 +56,6 @@ fi
 cat $WH_SVCDIR/$WH_SVCFILE
 
 echo "Manually Enable/Start/Stop the webhookListener systemd service with commands:"
-
-echo "systemctl enable webhookListener"
-echo "systemctl start webhookListener"
-echo "systemctl stop webhookListener"
+echo "  systemctl enable webhookListener"
+echo "  systemctl start webhookListener"
+echo "  systemctl stop webhookListener"
