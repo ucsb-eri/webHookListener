@@ -1,0 +1,7 @@
+# Edit the following Environment Vars to suit your install
+# SECRET_TOKEN needs to agree with the Secret Token used in your GitHub Webhook
+# BIND_ADDRESS is the interface on this server to bind the listener to
+# SCRIPTSHELL is the unix shell script called by the ruby/sinatra when an appropriate payload is received
+WEBHOOK_LISTENER_SCRIPTSHELL=WH_SCRIPTSHELL
+WEBHOOK_LISTENER_BIND_ADDRESS=128.111.100.88
+WEBHOOK_LISTENER_SECRET_TOKEN=NotARealSecretString

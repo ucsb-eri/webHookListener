@@ -10,7 +10,8 @@
 + The Install.sh variables and their usage are documented a bit below
   + WH_USER=aaron                                # User that webhookListener services should run as
   + WH_GROUP=aaron                               # Group that webhookListener services should run as
-  + WH_ENV=/etc/sysconfig/webhookListener        # Environment Variables for systemd service (provided to ruby/sinatra script)
+  + WH_SYSCONFIGDIR=/etc/sysconfig               # system location to store env vars for systemctl service
+  + WH_SYSCONFIGFILE=webhookListener             # system file env file for systemd service (provided to ruby/sinatra script)
   + WH_SCRIPTRUBY=webhookListener.rb             # Where the ruby script will live
   + WH_SCRIPTSHELL=webhookListener.sh            # sh script that the ruby/sinatra script calls when triggered appropriately
   + WH_SCRIPTBINDIR=/opt/local/bin               # location to install WH_SCRIPTSHELL and WH_SCRIPTRUBY

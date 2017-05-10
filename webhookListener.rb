@@ -23,7 +23,7 @@ post '/payload' do
   # Now we need to do fire off something else, either via ruby or a shell script
   reponame = push["repository"]["name"]
   event = request.env['HTTP_X_GITHUB_EVENT']
-  system(ENV['WEBHOOK_LISTENER_SCRIPT'],reponame,event)
+  system(ENV['WEBHOOK_LISTENER_SCRIPTSHELL'],reponame,event)
 end
 
 def verify_signature(payload_body)
