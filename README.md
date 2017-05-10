@@ -26,6 +26,8 @@ This allows the listener to handle webhook calls from different repos, but they 
 ## Installation - Fedora-25
 As root:
 + dnf install ruby
++ If you are running a firewall, remember to poke a hole for port 4567 (sinatra default port)
+
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
