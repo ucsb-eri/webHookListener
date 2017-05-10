@@ -35,7 +35,7 @@ chown $WH_USER $file
 echo "Installing $WH_SCRIPTRUBY in $WH_SCRIPTBINDIR:"
 file=$WH_SCRIPTBINDIR/$WH_SCRIPTRUBY
 if [ -f "$file" ]; then
-    cat ../$WH_SCRIPTRUBY  > $file
+    cat $WH_SCRIPTRUBY  > $file
     [ $? -eq 0 ] || { echo "unable to create script: $file"; exit 1; }  
 else
     echo "$file already exists, no changes"
