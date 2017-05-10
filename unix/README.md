@@ -9,6 +9,8 @@ log=/var/log/webhookListener.log
 touch $log
 chmod 666 $log
 ```
+## Installation of components:
+Should really create a script to do this stuff, but maybe a bit later:
 
 As root:
 + Setup some variables to help make this simpler, maybe will add a script to help with this later :-)
