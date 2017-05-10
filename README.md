@@ -7,7 +7,7 @@ Need to set some environment variables before running the app:
 
 + **WEBHOOK_LISTENER_SECRET_TOKEN** your github webhook secret string
 + **WEBHOOK_LISTENER_BIND_ADDRESS** with the servers address to bind to
-+ **WEBHOOK_LISTENER_SCRIPT** script on the server running this to call
++ **WEBHOOK_LISTENER_SCRIPTSHELL** script on the server running this to call
 
 ie: 
 ```
