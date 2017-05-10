@@ -6,10 +6,10 @@ Requires=autofs.service
 [Service]
 Type=simple
 TimeoutStartSec=0
-User=WHUSER
-Group=WHGROUP
-EnvironmentFile=WHENV
-ExecStart=WHRUBYSCRIPT
+User=WH_USER
+Group=WH_GROUP
+EnvironmentFile=WH_ENV
+ExecStart=WH_SCRIPTRUBY
 
 [Install]
 WantedBy=multi-user.target

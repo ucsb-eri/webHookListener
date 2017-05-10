@@ -1,48 +1,48 @@
 #!/bin/sh
-WHUSER=aaron
-WHGROUP=aaron
-WHENV=/etc/sysconfig/webhookListener
-WHRUBYSCRIPT=/var/www/vhosts/webhookListener.rb
-WHBINDIR=/opt/local/bin
-WHSCRIPT=webhookListener.sh
-WHSVCDIR=/lib/systemd/system
-WHSVC=webhookListener.service
-WHSVCLOG=webhookListenerSvc.log # not used at the moment
-WHSCRIPTLOG=/var/log/webhookListener.log
+WH_USER=aaron
+WH_GROUP=aaron
+WH_ENV=/etc/sysconfig/webhookListener
+WH_SCRIPTBINDIR=/opt/local/bin
+WH_SCRIPTRUBY=webhookListener.rb
+WH_SCRIPTSHELL=webhookListener.sh
+WH_SVCDIR=/lib/systemd/system
+WH_SVCFILE=webhookListener.service
+WH_SVCLOG=webhookListenerSvc.log # not used at the moment
+WH_SCRIPTLOG=/var/log/webhookListener.log
 
 echo "Prep the logfile"
 
-[ ! -f "$WHSCRIPTLOG" ] && touch $WHSCRIPTLOG
-chmod 664 $WHSCRIPTLOG
-chown $WHUSER:$WHGROUP $WHSCRIPTLOG
+[ ! -f "$WH_SCRIPTLOG" ] && touch $WH_SCRIPTLOG
+chmod 664 $WH_SCRIPTLOG
+chown $WH_USER:$WH_GROUP $WH_SCRIPTLOG
 
 echo "Setup the shell script that will be called by the ruby script:"
-if [ ! -d "$WHBIDIR" ]; then
-    mkdir -p $WHBINDIR
-    [ $? -eq 0 ] || { echo "unable to create bin dir: $WHBINDIR"; exit 1; }  
+if [ ! -d "$WH_BIDIR" ]; then
+    mkdir -p $WH_SCRIPTBINDIR
+    [ $? -eq 0 ] || { echo "unable to create bin dir: $WH_SCRIPTBINDIR"; exit 1; }  
 fi
 
-if [ -f "$WHSCRIPT" ]; then
-    cat $WHSCRIPT | sed -e "s/WHSCRIPTLOG/$WHSCRIPTLOG/" > $WHBINDIR
-    [ $? -eq 0 ] || { echo "unable to create script: $WHSCRIPT in dir: $WHBINDIR"; exit 1; }  
+if [ -f "$WH_SCRIPTSHELL" ]; then
+    cat $WH_SCRIPTSHELL | sed -e "s/WH_SCRIPTLOG/$WH_SCRIPTLOG/" > $WH_SCRIPTBINDIR
+    [ $? -eq 0 ] || { echo "unable to create script: $WH_SCRIPTSHELL in dir: $WH_SCRIPTBINDIR"; exit 1; }  
 else
-    echo "$WHSCRIPT already exists, no changes"
+    echo "$WH_SCRIPTSHELL already exists, no changes"
 fi
-chown $WHUSER $WHBINDIR/$WHSCRIPT
+chown $WH_USER $WH_SCRIPTBINDIR/$WH_SCRIPTSHELL
 
 
 echo "Setup the systemd service:"
-if [ -f "$WHSVCDIR/$WHSVC" ]; then
-    cat $WHSVC | sed \
-        -e "s/WHUSER/$WHUSER/" \
-        -e "s/WHGROUP/$WHGROUP/" \
-        -e "s/WHRUBYSCRIPT/$WHRUBYSCRIPT/" \
-        -e "s/WHENV/$WHENV/" \
-	> $WHSVCDIR/$WHSVC
+if [ -f "$WH_SVCDIR/$WH_SVCFILE" ]; then
+    cat $WH_SVCFILE | sed \
+        -e "s/WH_USER/$WH_USER/" \
+        -e "s/WH_GROUP/$WH_GROUP/" \
+        -e "s/WH_SCRIPTRUBY/$WH_SCRIPTRUBY/" \
+        -e "s/WH_ENV/$WH_ENV/" \
+	> $WH_SVCDIR/$WH_SVCFILE
 else
-    echo "$WHSVCDIR/$WHSVC already exists, no changes"
+    echo "$WH_SVCDIR/$WH_SVCFILE already exists, no changes"
 fi
-cat $WHSVCDIR/$WHSVC
+cat $WH_SVCDIR/$WH_SVCFILE
 
 echo "Manually Enable/Start/Stop the webhookListener systemd service with commands:"
 
