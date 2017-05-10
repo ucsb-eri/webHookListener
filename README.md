@@ -42,3 +42,14 @@ As root:
 
 As a regular user:
 + gem install jekyll bundler
+
+
+### Downstream Installation Notes - waves_website specific
+As root:
++ dnf install ImageMagick ImageMagick-devel
++ dnf install libxml2 libxml2-devel
++ dnf install libxslt libxslt-devel
+
+As regular user:
++ bundle config build.nokogiri --use-system-libraries
++ bundle install
