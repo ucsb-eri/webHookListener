@@ -1,8 +1,11 @@
-# Some UNIX (Fedora/CentOS/RHEL) components used to deploy
+# Deploy on Fedora/CentOS/RHEL
+An install script has been provided to ease installation on these platforms.  
+The script helps get the following scripts/services properly configured.
 
-+ __webhookListener.sh__ - An example script to be triggered by the ruby script
++ __webhookListener.rb__ - The main ruby/sintra script that receives the webhook payload
++ __webhookListener.sh__ - The shell script called by the ruby script when an appropriate POST occurs
 + __webhookListener.service__ - systemd script to start the ruby/sinatra listener service
-+ __Install.sh__ - shell script to help with installation of the script and service
++ __Install-FC+RHEL+CENTOS.sh__ - shell script to help with installation of the scripts and service
 
 ## Installation of components:
 + Edit the Install.sh script and adjust the variables at the top to reflect the installation on your system.
