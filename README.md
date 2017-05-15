@@ -8,6 +8,7 @@ that website repo has a deploy branch.  Pushes to that branch should trigger a p
 on the local server and a jekyll rebuild (update the _site folder).
 
 ## Github Prep
+**NOTE**: The github docs on this are great and are likely more help that this quick summary :-)
 + Navigate to the repo you want to initiate webhooks
 + Click on **Settings** tab (near top of repo display)
 + Click on **Webhooks** menu item (on left hand side)
