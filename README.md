@@ -21,6 +21,28 @@ on the local server and a jekyll rebuild (update the _site folder).
 Some of the following is a bit deprecated as I did set up an install script to
 assist in a systemctl install, but will leave in for historic reference/context.
 
+The general overview:
++ systemctl driven launcher for the ruby script:
+  + utilizes EnvironmentFile to setup the environment variables that the ruby/sintra script requires
+  + run as non-privileged user.
+  + service can be used as target for different/multiple repos.
++ ruby/sinatra script (webhookListener.rb):
+  + simple webserver that listens on localhost:4567 by default.
+  + validates credentials using **Secret** token.
+  + fires off a shell script:
+    + with arguments derived from the github event payload.
+    + shell was chosen for familiarity (not well versed in ruby (YET)).  
+    + same functionality could be achieved with ruby.
+    + runs as the same user ruby/sintra script is running under.
+  + single script can process events for different github repos.
++ shell script (webhookListener.sh):
+  + parses input arguments.
+  + choose subroutine to run based on logic using those arguments.
+  + performs some real basic file locking (so multiple events do not overlap).
+  + backgrounds actual jekyll rebuild:
+    + prevents timeout "failures" due to blocking io that just doesn't return in time
+  + some logging to /var/log/webhookListner.log (or name configured during install)
+
 ### Historic
 Need to set some environment variables before running the app:
 
@@ -51,7 +73,10 @@ As root:
 As a regular user (possibly the account that will run the above?)
 + gem install sinatra
 
-Once the above is done, you should be able to read the README-FC+RHEL+CENTOS.md file and then install the components on the server using the Install script.
+Once the above is done:
++ read the README-FC+RHEL+CENTOS.md file.
++ edit Install script and customize paths, Secret tokens etc... to match your install.
++ run the script.
 
 ## Server Side Downstream Installation - Fedora-25
 The motivation for this webhookListener project is to allow automated building of jekyll sites following a github webhook push event.
