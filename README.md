@@ -39,9 +39,9 @@ assist in a systemctl install, but will leave in for historic reference/context.
   + parses input arguments.
   + choose subroutine to run based on logic using those arguments.
   + performs some real basic file locking (so multiple events do not overlap).
-  + backgrounds actual jekyll rebuild:
-    + prevents timeout "failures" due to blocking io that just doesn't return in time
-  + some logging to /var/log/webhookListner.log (or name configured during install)
+  + backgrounds jekyll rebuild (+logging, unlocking, etc...):
+    + prevents timeout *"failures"* due to blocking I/O that may not return in time
+  + some logging to /var/log/webhookListner.log
 
 ### Historic
 Need to set some environment variables before running the app:
