@@ -9,12 +9,12 @@ on the local server and a jekyll rebuild (update the _site folder).
 
 ## Github Prep
 + Navigate to the repo you want to initiate webhooks
-+ Click on '''Settings''' tab (near top of repo display)
-+ Click on '''Webhooks''' menu item (on left hand side)
-+ Click on '''Add webhook'''
-  + Specify the *Payload URL*
-  + Select *Content Type*: The script here expects the type to be: _application/x-www-form-urlencoded_
-  + Specify *Secret* Token: can be any string.  You will need that validate the payload on your server
++ Click on **Settings** tab (near top of repo display)
++ Click on **Webhooks** menu item (on left hand side)
++ Click on **Add webhook**
+  + Specify the **Payload URL**
+  + Select **Content Type**: The script here expects the type to be: _application/x-www-form-urlencoded_
+  + Specify **Secret** Token: can be any string.  You will need that validate the payload on your server
 
 ## Server side Goodies
 Some of the following is a bit deprecated as I did set up an install script to
