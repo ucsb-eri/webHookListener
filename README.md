@@ -1,5 +1,8 @@
 # webHookListener
-ruby/sinatra github webhook listener
+ruby/sinatra github webhook listener service.
+
+This install is specifically configures for Fedora/RHEL/CentOS at this time, but
+could be ported (pretty easily) to other linux variants.
 
 ## Background
 The driving goal of this repo was to trigger updating and publishing of a github
@@ -28,13 +31,13 @@ on the local server and a jekyll rebuild (update the _site folder).
   + drop in **/etc/sysconfig** by Install script.
 + **webhookListener.rb** - ruby/sinatra script:
   + simple webserver that listens on localhost:4567 by default.
+  + single script can process events for different github repos.
   + validates credentials using **Secret** token.
   + fires off a shell script:
     + with arguments derived from the github event payload.
     + shell was chosen for familiarity (not well versed in ruby (YET)).  
     + same functionality could be achieved with ruby.
     + runs as the same user ruby/sintra script is running under.
-  + single script can process events for different github repos.
 + **webhookListener.sh** - shell script that ultimately deals with the builds:
   + parses input arguments.
   + choose subroutine to run based on logic using those arguments.
