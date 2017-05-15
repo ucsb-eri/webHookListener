@@ -21,8 +21,8 @@ on the local server and a jekyll rebuild (update the _site folder).
 Some of the following is a bit deprecated as I did set up an install script to
 assist in a systemctl install, but will leave in for historic reference/context.
 
-The general overview:
-+ systemctl driven launcher for the ruby script:
+### General overview:
++ systemctl driven launcher for the ruby script (webhookListener.service):
   + utilizes EnvironmentFile to setup the environment variables that the ruby/sintra script requires
   + run as non-privileged user.
   + service can be used as target for different/multiple repos.
