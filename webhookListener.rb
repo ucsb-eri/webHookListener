@@ -20,6 +20,13 @@ post '/payload' do
   "I got some JSON: #{push.inspect}"
   #console.log('Hey There, just seein if this works')
 
+  # some vars need checking before we can include them
+  if push.include?('ref'))
+      ref = push['ref']
+  else {
+      ref = ''
+  end
+
   # Now we need to do fire off something else, either via ruby or a shell script
   reponame = push["repository"]["name"]
   ref = push["ref"]
