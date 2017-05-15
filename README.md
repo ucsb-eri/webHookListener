@@ -23,7 +23,9 @@ on the local server and a jekyll rebuild (update the _site folder).
   + utilizes EnvironmentFile to setup the environment variables that the ruby/sintra script requires
   + run as non-privileged user.
   + service can be used as target for different/multiple repos.
-+ **webhookListener** - EnvironmentFile used by systemctl - drop in /etc/sysconfig/
++ **webhookListener** - EnvironmentFile used by systemctl:
+  + edit as needed
+  + drop in **/etc/sysconfig** by Install script.
 + **webhookListener.rb** - ruby/sinatra script:
   + simple webserver that listens on localhost:4567 by default.
   + validates credentials using **Secret** token.
