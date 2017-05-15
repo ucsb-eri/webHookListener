@@ -3,9 +3,9 @@ ruby/sinatra github webhook listener
 
 ## Background
 The driving goal of this repo was to trigger updating and publishing of a github
-based jekyll website repo on one of our web servers (Fedora-25).  
-More specifically, that website repo has a deploy branch.
-Pushes to that branch should trigger a pull on the local server and a jekyll rebuild (update the _site folder).
+based jekyll website repo on one of our web servers (Fedora-25).  More specifically,
+that website repo has a deploy branch.  Pushes to that branch should trigger a pull
+on the local server and a jekyll rebuild (update the _site folder).
 
 ## Github Prep
 + Navigate to the repo you want to initiate webhooks
