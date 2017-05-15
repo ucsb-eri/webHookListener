@@ -1,7 +1,7 @@
 # webHookListener
 ruby/sinatra github webhook listener service.
 
-This install is specifically configures for Fedora/RHEL/CentOS at this time, but
+This install specifically configures for Fedora/RHEL/CentOS at this time, but
 could be ported (pretty easily) to other linux variants.
 
 ## Background
