@@ -21,9 +21,9 @@ post '/payload' do
   #console.log('Hey There, just seein if this works')
 
   # some vars need checking before we can include them
-  if push.include?('ref'))
+  if push.include?('ref')
       ref = push['ref']
-  else {
+  else
       ref = ''
   end
 
