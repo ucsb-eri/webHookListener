@@ -17,16 +17,14 @@ on the local server and a jekyll rebuild (update the _site folder).
   + Select **Content Type**: The script here expects the type to be: _application/x-www-form-urlencoded_
   + Specify **Secret** Token: can be any string.  You will need that validate the payload on your server
 
-## Server side Goodies
-Some of the following is a bit deprecated as I did set up an install script to
-assist in a systemctl install, but will leave in for historic reference/context.
-
+## Server Side Components
 ### General overview:
-+ systemctl driven launcher for the ruby script (webhookListener.service):
++ **webhookListener.service** - systemctl driven launcher for the ruby script:
   + utilizes EnvironmentFile to setup the environment variables that the ruby/sintra script requires
   + run as non-privileged user.
   + service can be used as target for different/multiple repos.
-+ ruby/sinatra script (webhookListener.rb):
++ **webhookListener** - EnvironmentFile used by systemctl - drop in /etc/sysconfig/
++ **webhookListener.rb** - ruby/sinatra script:
   + simple webserver that listens on localhost:4567 by default.
   + validates credentials using **Secret** token.
   + fires off a shell script:
@@ -35,7 +33,7 @@ assist in a systemctl install, but will leave in for historic reference/context.
     + same functionality could be achieved with ruby.
     + runs as the same user ruby/sintra script is running under.
   + single script can process events for different github repos.
-+ shell script (webhookListener.sh):
++ **webhookListener.sh** - shell script that ultimately deals with the builds:
   + parses input arguments.
   + choose subroutine to run based on logic using those arguments.
   + performs some real basic file locking (so multiple events do not overlap).
@@ -44,6 +42,9 @@ assist in a systemctl install, but will leave in for historic reference/context.
   + some logging to /var/log/webhookListner.log
 
 ### Historic
+This section is mostly deprecated by the addition of an install script, but has
+been left for historic context/reference :-)
+
 Need to set some environment variables before running the app:
 
 + **WEBHOOK_LISTENER_SECRET_TOKEN** your github webhook secret string
