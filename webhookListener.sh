@@ -28,16 +28,17 @@ done
 
 update_waves_website(){
     process_ref="refs/heads/deploy"
+    project="waves-website"
     [ "$ref" = "$process_ref" ] || { echo "repo: $repo, processes only ref: $process_ref, not sure what to do with: $ref" >> $log; return ; }
 
-    lockfile=/tmp/webhookListener-waves-website-lock
+    lockfile=/tmp/webhookListener-$project-lock
     # want to avoid overlapping jekyll builds, so a lockfile is a real good idea
     [ -f $lockfile ] && { echo "# WARNING: Lockfile $lockfile exists, possibly a second webhook event before the first f
 inished???" >> $log ; return 1; }
     touch $lockfile
     echo "cd to /home/caylor-lab/waves_website" >> $log
     cd /home/caylor-lab/waves_website
-    echo "Initiating git pull and jekyll build" >> $log
+    echo "Initiating git pull and jekyll build for: $project" >> $log
     # The jekyll build can take a long time, but we need the overall webhook process
     # to complete in a reasonable amount of time, so a backgrounded subshell should do the trick
     (git pull origin deploy >> $log 2>&1 ; ~/bin/jekyll build >> $log 2>&1 ; rm $lockfile; ) &
@@ -45,20 +46,20 @@ inished???" >> $log ; return 1; }
 
 update_jekTest(){
     process_ref="refs/heads/deploy"
+    project=jekTest
     [ "$ref" = "$process_ref" ] || { echo "repo: $repo, processes only ref: $process_ref, not sure what to do with: $ref" >> $log; return ; }
 
-    lockfile=/tmp/webhookListener-waves-website-lock
+    lockfile=/tmp/webhookListener-$project-lock
     # want to avoid overlapping jekyll builds, so a lockfile is a real good idea
     [ -f $lockfile ] && { echo "# WARNING: Lockfile $lockfile exists, possibly a second webhook event before the first f
 inished???" >> $log ; return 1; }
     touch $lockfile
     echo "Getting into processing payload: repo: $repo, event: $event, ref: $ref" >> $log
-    cd /home/caylor-lab/waves_website
-    echo "Initiating git pull and jekyll build" >> $log
+    cd /home/aaron/sites/jekTest
+    echo "Initiating git pull and jekyll build for: $project" >> $log
     # The jekyll build can take a long time, but we need the overall webhook process
     # to complete in a reasonable amount of time, so a backgrounded subshell should do the trick
-    #(git pull origin deploy >> $log 2>&1 ; ~/bin/jekyll build >> $log 2>&1 ; rm $lockfile; ) &
-    rm $lockfile
+    (git pull origin deploy >> $log 2>&1 ; ~/bin/jekyll build >> $log 2>&1 ; rm $lockfile; ) &
 }
 # Ultimately this needs to be called only on the appropriate events, but for testing we will do this.
 case $repo in
