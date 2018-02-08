@@ -11,7 +11,7 @@ that website repo has a deploy branch.  Pushes to that branch should trigger a p
 on the local server and a jekyll rebuild (update the _site folder).
 
 ## Github Prep
-**NOTE**: The github docs on this are great and are likely more help that this quick summary :-)
+**NOTE**: The github docs on this are great and are likely more help than this quick summary :-)
 + Navigate to the repo you want to initiate webhooks
 + Click on **Settings** tab (near top of repo display)
 + Click on **Webhooks** menu item (on left hand side)
@@ -98,6 +98,17 @@ As root:
 As a regular user:
 + gem install jekyll bundler
 
+## Server Side OS updates/upgrades - Fedora-25
+Have seen issues with OS updates/upgrades breaking the user ruby/gem environment.
+I dont understand that landscape enough to understand exactly what got broken.  
+Putzing around with various things eventually seemed to repair the issue.
+
+Gemfile.lock requires specific versions of gems.  I believe that's built by bundler (gem manager).
+Instead of running jekyll directly, seems like it may be better to run as:
+```
+bundler exec jekyll build
+```
+Since I am running the ruby webhook listener under a non-privileged user account, once the account environment is fixed, both jekyll and sinatra should behave themselves.
 
 ### Downstream Installation Notes - waves_website specific
 As root:
