@@ -106,6 +106,7 @@ Putzing around with various things eventually seemed to repair the issue.
 Gemfile.lock requires specific versions of gems.  I believe that's built by bundler (gem manager).
 Instead of running jekyll directly, seems like it may be better to run as:
 ```
+# current deployment (2018-06) is at spin:/home/caylor-lab/waves_website
 bundler exec jekyll build
 ```
 Since I am running the ruby webhook listener under a non-privileged user account, once the account environment is fixed, both jekyll and sinatra should behave themselves.
