@@ -99,7 +99,7 @@ As a regular user:
 + gem install jekyll bundler
 
 ## Server Side OS updates/upgrades/issues
-&#x1F534; current deployment (2018-06) is at spin:/home/caylor-lab/waves_website
+&#x1F53A; current deployment (2018-06) is at spin:/home/caylor-lab/waves_website
 ### Fedora-25
 Have seen issues with OS updates/upgrades breaking the user ruby/gem environment.
 I dont understand that landscape enough to understand exactly what got broken.  
