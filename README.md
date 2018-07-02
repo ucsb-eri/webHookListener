@@ -124,6 +124,16 @@ The above caused rebuilds/reinstalls of:
 * nokogiri
 * rmagick
 
+Tried to run bundler exec jekyll build - but had a typo not caught - thought I needed to reinstall jekyll which I did as user
+```
+gem install jekyll
+```
+
+Caught typo and was able to successfully run
+```
+bundler exec jekyll build
+```
+
 ### Downstream Installation Notes - waves_website specific
 As root:
 + dnf install ImageMagick ImageMagick-devel
