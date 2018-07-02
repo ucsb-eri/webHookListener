@@ -98,7 +98,9 @@ As root:
 As a regular user:
 + gem install jekyll bundler
 
-## Server Side OS updates/upgrades - Fedora-25
+## Server Side OS updates/upgrades/issues
+:&#x1F534;: current deployment (2018-06) is at spin:/home/caylor-lab/waves_website
+### Fedora-25
 Have seen issues with OS updates/upgrades breaking the user ruby/gem environment.
 I dont understand that landscape enough to understand exactly what got broken.  
 Putzing around with various things eventually seemed to repair the issue.
@@ -106,10 +108,21 @@ Putzing around with various things eventually seemed to repair the issue.
 Gemfile.lock requires specific versions of gems.  I believe that's built by bundler (gem manager).
 Instead of running jekyll directly, seems like it may be better to run as:
 ```
-# current deployment (2018-06) is at spin:/home/caylor-lab/waves_website
 bundler exec jekyll build
 ```
 Since I am running the ruby webhook listener under a non-privileged user account, once the account environment is fixed, both jekyll and sinatra should behave themselves.
+
+### Fedora-26 (updates)
+OS updates/upgrades broke ruby/gem environment again.
+
+```
+bundler install
+```
+
+The above caused rebuilds/reinstalls of:
+* ffi
+* nokogiri
+* rmagick
 
 ### Downstream Installation Notes - waves_website specific
 As root:
