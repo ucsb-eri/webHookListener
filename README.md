@@ -134,6 +134,14 @@ Caught typo and was able to successfully run
 bundler exec jekyll build
 ```
 
+### Fedora-29 ###
+The below was suggested after a bundle install attempt.
+```
+cd /home/caylor-lab/waves_website
+bundle install --path vendor/bundle
+```
+
+Still a number of warnings and such at the top of the installation.
 ### Downstream Installation Notes - waves_website specific
 As root:
 + dnf install ImageMagick ImageMagick-devel
