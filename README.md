@@ -4,6 +4,8 @@ ruby/sinatra github webhook listener service.
 This install specifically configures for Fedora/RHEL/CentOS at this time, but
 could be ported (pretty easily) to other linux variants.
 
+Current install at spin:/opt/local/bin
+
 ## Background
 The driving goal of this repo was to trigger updating and publishing of a github
 based jekyll website repo on one of our web servers (Fedora-25).  More specifically,
