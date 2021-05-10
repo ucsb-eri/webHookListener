@@ -2,6 +2,7 @@
 WH_USER=aaron
 WH_GROUP=aaron
 WH_SYSCONFIGDIR=/etc/sysconfig
+WH_ENV=${WH_SYSCONFIGDIR}/webhookListener
 WH_SYSCONFIGFILE=webhookListener
 WH_SCRIPTBINDIR=/opt/local/bin
 WH_SCRIPTRUBY=webhookListener.rb
