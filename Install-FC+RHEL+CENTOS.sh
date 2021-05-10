@@ -1,6 +1,6 @@
 #!/bin/sh
-WH_USER=aaron
-WH_GROUP=aaron
+WH_USER=root
+WH_GROUP=wheel
 WH_SYSCONFIGDIR=/etc/sysconfig
 WH_ENV=${WH_SYSCONFIGDIR}/webhookListener
 WH_SYSCONFIGFILE=webhookListener
