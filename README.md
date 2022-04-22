@@ -8,6 +8,8 @@ Current install at spin:/opt/local/bin
 
 Pretty sure it's deployed just by copying the webhookListener.(rb|sh) files to where they sit.
 
+Current payload url for eri is: http:/github-webhook.eri.ucsb.edu:4567/payload
+
 ## Background
 The driving goal of this repo was to trigger updating and publishing of a github
 based jekyll website repo on one of our web servers (Fedora-25).  More specifically,
