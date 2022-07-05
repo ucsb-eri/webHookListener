@@ -157,3 +157,9 @@ As root:
 As regular user:
 + bundle config build.nokogiri --use-system-libraries
 + bundle install
+
+### Fedora-36 ###
+Sinatra broken - resovled with:
+```
+gem install sinatra pick webrick puma thin reel
+```
