@@ -19,7 +19,7 @@ chmod 664 $WH_SCRIPTLOG
 chown $WH_USER:$WH_GROUP $WH_SCRIPTLOG
 
 echo "Checking on the $WH_SCRIPTBINDIR install destination:"
-if [ ! -d "$WH_SCRIPTBIDIR" ]; then
+if [ ! -d "$WH_SCRIPTBINDIR" ]; then
     mkdir -p $WH_SCRIPTBINDIR
     [ $? -eq 0 ] || { echo "unable to create bin dir: $WH_SCRIPTBINDIR"; exit 1; }  
 fi
